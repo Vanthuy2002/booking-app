@@ -1,1 +1,21 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'react-toastify/dist/ReactToastify.min.css';
+
+.spacing-to-nav {
+  margin-top: 60px;
+}
+.none-select {
+  user-select: none;
+}
+.avatar {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+.icon {
+  width: 24px;
+  height: 24px;
+}
+a {
+  text-decoration: none;
+}
