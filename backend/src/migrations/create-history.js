@@ -16,6 +16,9 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       desc: {
+        type: Sequelize.INTEGER,
+      },
+      file: {
         type: Sequelize.TEXT,
       },
       createdAt: {

@@ -24,10 +24,13 @@ module.exports = {
       phone: {
         type: Sequelize.INTEGER,
       },
-      typeRole: {
-        type: Sequelize.STRING,
+      roleId: {
+        type: Sequelize.INTEGER,
       },
-      keyRole: {
+      positionId: {
+        type: Sequelize.INTEGER,
+      },
+      image: {
         type: Sequelize.STRING,
       },
       createdAt: {
