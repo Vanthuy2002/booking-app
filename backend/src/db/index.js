@@ -3,11 +3,13 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const db = process.env.DB;
+const user = process.env.USER;
+const type = process.env.TYPE;
 
 export const connectToDb = async () => {
-  const sequelize = new Sequelize(`${db}`, 'root', null, {
+  const sequelize = new Sequelize(db, user, null, {
     host: 'localhost',
-    dialect: 'mysql',
+    dialect: type,
   });
   try {
     await sequelize.authenticate();
