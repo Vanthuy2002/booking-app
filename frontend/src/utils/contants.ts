@@ -1,8 +1,14 @@
 /* eslint-disable no-unused-vars */
-export enum pathRoutes {
+enum pathRoutes {
   HOME = '/',
   LOGIN = 'login',
   REGISTER = 'register',
+}
+
+enum validator {
+  REQUIRED = 'This field is required',
+  EMAIL = 'This field must be an email',
+  MIN = 'Password must be less than 5 characters',
 }
 
 const cloneDeep = <T>(object: T): T => {
@@ -10,4 +16,4 @@ const cloneDeep = <T>(object: T): T => {
   return newObject;
 };
 
-export { cloneDeep };
+export { cloneDeep, validator, pathRoutes };

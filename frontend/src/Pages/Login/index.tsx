@@ -1,9 +1,39 @@
-import { Button, Col, Container, Form, Row, Spinner } from 'react-bootstrap';
+import {
+  Button,
+  Col,
+  Container,
+  Form,
+  FormGroup,
+  Row,
+  Spinner,
+} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { ILoginInput } from '@/utils/types';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { validator } from '@/utils/contants';
+import { ChangeEvent, useState } from 'react';
 
-const isSubmitting = false;
+const schema = yup.object({
+  email: yup.string().required(validator.REQUIRED).email(validator.EMAIL),
+  password: yup.string().required(validator.REQUIRED).min(5, validator.MIN),
+});
 
 export default function Login() {
+  const [show, setShow] = useState(false);
+  const { register, handleSubmit, formState } = useForm<ILoginInput>({
+    resolver: yupResolver(schema),
+  });
+  const { errors, isSubmitting } = formState;
+
+  const onLogin: SubmitHandler<ILoginInput> = async (values) => {
+    console.log(values);
+  };
+
+  const onShowPass = (e: ChangeEvent<HTMLInputElement>) =>
+    setShow(e.target.checked);
+
   return (
     <div className='bg-info-subtle'>
       <Container>
@@ -26,23 +56,43 @@ export default function Login() {
               </p>
             </Link>
             <div className='p-3 rounded shadow bg-white'>
-              <Form autoComplete='off'>
+              <Form autoComplete='off' onSubmit={handleSubmit(onLogin)}>
                 <Form.Group className='mb-3' controlId='email'>
                   <Form.Label className='fw-semibold'>Email</Form.Label>
                   <Form.Control
-                    className='p-3'
+                    {...register('email')}
+                    className={`p-3 ${errors.email && 'is-invalid'}`}
                     placeholder='name@example.com'
                   />
+                  {errors && errors.email && (
+                    <p className='text-danger fs-6'>{errors.email.message}</p>
+                  )}
                 </Form.Group>
 
                 <Form.Group className='mb-3' controlId='password'>
                   <Form.Label className='fw-semibold'>Password</Form.Label>
                   <Form.Control
-                    type='password'
-                    className='p-3'
+                    {...register('password')}
+                    type={show ? 'text' : 'password'}
+                    className={`p-3 ${errors.password && 'is-invalid'}`}
                     placeholder='Your password...'
                   />
+                  {errors && errors.password && (
+                    <p className='text-danger fs-6'>
+                      {errors.password.message}
+                    </p>
+                  )}
                 </Form.Group>
+
+                <FormGroup className='mb-3 d-flex justify-content-end none-select'>
+                  <Form.Check
+                    onChange={onShowPass}
+                    type='checkbox'
+                    label='Show password'
+                    id='Show password'
+                    checked={show}
+                  />
+                </FormGroup>
 
                 <Button
                   style={{ padding: '12px 0' }}

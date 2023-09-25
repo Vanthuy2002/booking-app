@@ -7,3 +7,8 @@ export interface IMenuList {
 export interface IPath {
   [P: string]: string;
 }
+
+export interface ILoginInput {
+  email: string;
+  password: string;
+}
