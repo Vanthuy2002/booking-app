@@ -3,3 +3,7 @@ export interface IMenuList {
   name: string;
   url: string;
 }
+
+export interface IPath {
+  [P: string]: string;
+}

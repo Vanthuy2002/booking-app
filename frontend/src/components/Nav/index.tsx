@@ -1,13 +1,6 @@
-import { menuOptions } from '@/utils/contants';
+import { pathRoutes } from '@/utils/contants';
 import { Fragment } from 'react';
-import {
-  Button,
-  Container,
-  Image,
-  Nav,
-  NavDropdown,
-  Navbar,
-} from 'react-bootstrap';
+import { Button, Container, Image, Nav, Navbar } from 'react-bootstrap';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 const authInfo = false;
@@ -28,7 +21,7 @@ export default function BasicNav() {
               height='30'
               className='d-inline-block align-top'
             />{' '}
-            <span className='text-primary fw-bold'>Booking Care</span>
+            <span className='text-primary fw-bold'>Booking</span>
           </Link>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
@@ -36,26 +29,6 @@ export default function BasicNav() {
               <NavLink to='/' className='nav-link'>
                 Home
               </NavLink>
-              <NavDropdown
-                title='Manager'
-                id='basic-nav-dropdown'
-                className='mb-2 mb-lg-0'
-              >
-                {menuOptions.map((menu) => (
-                  <Button
-                    key={menu.id}
-                    variant='light'
-                    className='dropdown-item'
-                  >
-                    {menu.name}
-                  </Button>
-                ))}
-                <NavDropdown.Divider />
-                <Button variant='light' className='dropdown-item'>
-                  Logout
-                </Button>
-              </NavDropdown>
-
               <div className='d-flex gap-2 flex-grow-1 justify-content-end align-items-center'>
                 {authInfo ? (
                   <Fragment>
@@ -65,13 +38,13 @@ export default function BasicNav() {
                 ) : (
                   <Fragment>
                     <Button
-                      onClick={() => onChangeURL('/login')}
+                      onClick={() => onChangeURL(`/${pathRoutes.LOGIN}`)}
                       variant='outline-secondary'
                     >
                       Login
                     </Button>
                     <Button
-                      onClick={() => onChangeURL('/register')}
+                      onClick={() => onChangeURL(`/${pathRoutes.REGISTER}`)}
                       variant='primary'
                     >
                       Get Started

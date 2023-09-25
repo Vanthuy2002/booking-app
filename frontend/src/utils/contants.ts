@@ -1,8 +1,13 @@
-import { IMenuList } from './types';
+/* eslint-disable no-unused-vars */
+export enum pathRoutes {
+  HOME = '/',
+  LOGIN = 'login',
+  REGISTER = 'register',
+}
 
-const menuOptions: IMenuList[] = [
-  { id: 1, name: 'Booking', url: '/' },
-  { id: 2, name: 'Action', url: '/' },
-];
+const cloneDeep = <T>(object: T): T => {
+  const newObject = JSON.parse(JSON.stringify(object));
+  return newObject;
+};
 
-export { menuOptions };
+export { cloneDeep };

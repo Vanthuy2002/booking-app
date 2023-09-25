@@ -22,7 +22,7 @@ export default function Login() {
           <Col md={6}>
             <Link to='/'>
               <p className='h1 my-5 d-md-none d-block fw-bold text-center text-primary'>
-                React App
+                Booking Care
               </p>
             </Link>
             <div className='p-3 rounded shadow bg-white'>
