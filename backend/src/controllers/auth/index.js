@@ -1,4 +1,13 @@
-import { loginService } from '../../services/auth';
+import { loginService, registerServices } from '../../services/auth';
+
+const handleRegister = async (req, res) => {
+  try {
+    const { message, status } = await registerServices(req.body);
+    res.status(status).json({ message, status });
+  } catch (err) {
+    res.status(500).json({ message: err.toString() });
+  }
+};
 
 const handleLogin = async (req, res) => {
   try {
@@ -9,6 +18,6 @@ const handleLogin = async (req, res) => {
   }
 };
 
-const authCtrl = { handleLogin };
+const authCtrl = { handleLogin, handleRegister };
 
 export default authCtrl;

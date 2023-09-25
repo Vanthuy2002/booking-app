@@ -28,9 +28,9 @@ export default function Register() {
             </Link>
             <div className='p-3 rounded shadow bg-white'>
               <Form autoComplete='off'>
-                <Form.Group className='mb-3' controlId='username'>
-                  <Form.Label className='fw-semibold'>Username</Form.Label>
-                  <Form.Control type='text' placeholder='@something...' />
+                <Form.Group className='mb-3' controlId='fullname'>
+                  <Form.Label className='fw-semibold'>Fullname</Form.Label>
+                  <Form.Control type='text' placeholder='something...' />
                 </Form.Group>
 
                 <Form.Group className='mb-3' controlId='email'>
