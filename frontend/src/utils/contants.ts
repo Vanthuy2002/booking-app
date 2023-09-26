@@ -11,6 +11,8 @@ enum validator {
   MIN = 'Password must be less than 5 characters',
 }
 
+const menuOptions = [{ id: 1, name: 'User', to: 'manage/user' }];
+
 const cloneDeep = <T>(object: T): T => {
   const newObject = JSON.parse(JSON.stringify(object));
   return newObject;
@@ -25,4 +27,11 @@ const getFromStore = (key: string) => {
   return JSON.parse(user as string);
 };
 
-export { cloneDeep, validator, pathRoutes, saveToStore, getFromStore };
+export {
+  cloneDeep,
+  validator,
+  pathRoutes,
+  saveToStore,
+  getFromStore,
+  menuOptions,
+};

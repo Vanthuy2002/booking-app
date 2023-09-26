@@ -5,7 +5,7 @@ import Loading from '@/components/Loading';
 
 const Home = lazy(() => import('@/Pages/Home'));
 const Login = lazy(() => import('@/Pages/Login'));
-const Register = lazy(() => import('@/Pages/Register'));
+const ManageUser = lazy(() => import('@/Pages/Manager/User'));
 
 export default function AppRoutes() {
   return (
@@ -13,10 +13,10 @@ export default function AppRoutes() {
       <Routes>
         <Route element={<MainLayout />}>
           <Route path='/' element={<Home />} />
+          <Route path='manage/user' element={<ManageUser />} />
         </Route>
 
         <Route path='login' element={<Login />} />
-        <Route path='register' element={<Register />} />
       </Routes>
     </Suspense>
   );

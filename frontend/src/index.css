@@ -1,8 +1,9 @@
-@import 'bootstrap/dist/css/bootstrap.min.css';
-@import 'react-toastify/dist/ReactToastify.min.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .spacing-to-nav {
-  margin-top: 60px;
+  @apply mt-16;
 }
 .none-select {
   user-select: none;
