@@ -47,15 +47,15 @@ export default function Login() {
   const onShowPass = (e: ChangeEvent<HTMLInputElement>) =>
     setShow(e.target.checked);
 
-  // useEffect(() => {
-  //   if (user && user?.email) {
-  //     navigate('/');
-  //   }
-  // }, [user, navigate]);
+  useEffect(() => {
+    if (user && user?.email) {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
   return (
-    <div className='relative bg-accent flex flex-col items-center justify-center h-screen overflow-hidden'>
-      <div className='w-full p-6 bg-white border-t-4 border-gray-600 rounded-md shadow-md border-top lg:max-w-lg'>
+    <div className='relative flex flex-col items-center justify-center h-screen overflow-hidden bg-accent'>
+      <div className='w-full max-w-lg p-6 bg-white border-t-4 border-gray-600 rounded-md shadow-md border-top'>
         <h1 className='text-3xl font-bold text-center'>
           <Link to={pathRoutes.HOME}>
             <span className='text-info'>Booking</span>
@@ -74,10 +74,10 @@ export default function Login() {
               {...register('email')}
               type='text'
               placeholder='Email Address'
-              className='input input-bordered input-info w-full'
+              className='w-full input input-bordered input-info'
             />
             {errors && errors.email && (
-              <p className='text-red-500 text-sm'>{errors.email.message}</p>
+              <p className='text-sm text-red-500'>{errors.email.message}</p>
             )}
           </div>
 
@@ -89,15 +89,15 @@ export default function Login() {
               type={show ? 'text' : 'password'}
               {...register('password')}
               placeholder='Enter Password'
-              className='input input-bordered input-info w-full'
+              className='w-full input input-bordered input-info'
             />
             {errors && errors.password && (
-              <p className='text-red-500 text-sm'>{errors.password.message}</p>
+              <p className='text-sm text-red-500'>{errors.password.message}</p>
             )}
           </div>
 
           <div className='form-control'>
-            <label className='cursor-pointer label justify-start gap-2'>
+            <label className='justify-start gap-2 cursor-pointer label'>
               <input
                 type='checkbox'
                 onChange={onShowPass}
@@ -108,7 +108,7 @@ export default function Login() {
             </label>
           </div>
 
-          <button disabled={isSubmitting} className='btn btn-primary w-full'>
+          <button disabled={isSubmitting} className='w-full btn btn-primary'>
             {isSubmitting ? 'Loading...' : 'Login'}
           </button>
         </form>

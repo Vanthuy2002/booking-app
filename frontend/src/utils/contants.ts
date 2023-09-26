@@ -19,12 +19,16 @@ const cloneDeep = <T>(object: T): T => {
 };
 
 const saveToStore = (key: string, value: User | null) => {
-  return localStorage.setItem(key, JSON.stringify(value));
+  return sessionStorage.setItem(key, JSON.stringify(value));
 };
 
 const getFromStore = (key: string) => {
-  const user = localStorage.getItem(key);
+  const user = sessionStorage.getItem(key);
   return JSON.parse(user as string);
+};
+
+const deleteValue = (key: string) => {
+  return sessionStorage.removeItem(key);
 };
 
 export {
@@ -34,4 +38,5 @@ export {
   saveToStore,
   getFromStore,
   menuOptions,
+  deleteValue,
 };

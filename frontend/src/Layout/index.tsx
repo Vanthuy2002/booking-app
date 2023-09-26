@@ -1,13 +1,14 @@
 import BasicNav from '@/components/Nav';
-import { Outlet } from 'react-router-dom';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { getFromStore } from '@/utils/contants';
+import { getFromStore, pathRoutes } from '@/utils/contants';
 import { setInfoWhenLogin } from '@/reducers/auth';
 
 export default function MainLayout() {
   const { user } = useSelector((state: RootState) => state.authen);
+  const { pathname } = useLocation();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,7 +22,11 @@ export default function MainLayout() {
     <section className='App'>
       <BasicNav user={user} />
       <section className='spacing-to-nav'>
-        <Outlet></Outlet>
+        {(user && user.fullName) || pathname === '/' ? (
+          <Outlet />
+        ) : (
+          <Navigate to={pathRoutes.LOGIN} />
+        )}
       </section>
     </section>
   );
