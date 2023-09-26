@@ -3,9 +3,12 @@ import { Fragment } from 'react';
 import { Button, Container, Image, Nav, Navbar } from 'react-bootstrap';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 
-const authInfo = false;
+type Props = {
+  user: User | null;
+};
 
-export default function BasicNav() {
+export default function BasicNav(props: Props) {
+  const { user } = props;
   const navigate = useNavigate();
   const onChangeURL = (path: string) => navigate(path);
 
@@ -30,10 +33,17 @@ export default function BasicNav() {
                 Home
               </NavLink>
               <div className='d-flex gap-2 flex-grow-1 justify-content-end align-items-center'>
-                {authInfo ? (
+                {user && user.email ? (
                   <Fragment>
-                    <Image src='/Jisoo.jpg' className='avatar' roundedCircle />
-                    <span className='text-primary-emphasis'>Name</span>
+                    <Image
+                      src='/Jisoo.jpg'
+                      className='avatar'
+                      roundedCircle
+                      alt={user.fullName}
+                    />
+                    <span className='text-primary-emphasis'>
+                      {user.fullName}
+                    </span>
                   </Fragment>
                 ) : (
                   <Fragment>

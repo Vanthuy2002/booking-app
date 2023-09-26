@@ -1,12 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 type Props = {
-  user: object | null;
-  accessToken: string | null;
+  user: User | null;
 };
 const initialState: Props = {
   user: null,
-  accessToken: null,
 };
 
 const authSlice = createSlice({
@@ -14,8 +12,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setInfoWhenLogin: (state, action) => {
-      state.user = action.payload.user;
-      state.accessToken = action.payload.accessToken;
+      state.user = action.payload;
     },
   },
 });

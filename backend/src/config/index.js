@@ -10,7 +10,7 @@ import bodyParser from 'body-parser';
 const defineConfig = (app) => {
   app.use(express.json());
   app.use(express.static('public'));
-  app.use(cors());
+  app.use(cors({ origin: true }));
   app.use(cookie());
   app.use(bodyParser.urlencoded({ extended: true }));
 };

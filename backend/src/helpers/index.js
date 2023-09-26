@@ -6,7 +6,7 @@ const salt = bcrypt.genSaltSync(10);
 const findByEmail = async (email) => {
   const user = await db.User.findOne({
     where: { email },
-    attributes: ['email', 'password', 'roleId'],
+    attributes: ['email', 'password', 'fullName', 'roleId'],
     raw: true,
   });
   if (user) return user;

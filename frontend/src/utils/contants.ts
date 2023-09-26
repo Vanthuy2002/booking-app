@@ -16,4 +16,13 @@ const cloneDeep = <T>(object: T): T => {
   return newObject;
 };
 
-export { cloneDeep, validator, pathRoutes };
+const saveToStore = (key: string, value: User | null) => {
+  return localStorage.setItem(key, JSON.stringify(value));
+};
+
+const getFromStore = (key: string) => {
+  const user = localStorage.getItem(key);
+  return JSON.parse(user as string);
+};
+
+export { cloneDeep, validator, pathRoutes, saveToStore, getFromStore };
