@@ -11,7 +11,11 @@ enum validator {
   MIN = 'Password must be less than 5 characters',
 }
 
-const menuOptions = [{ id: 1, name: 'User', to: 'manage/user' }];
+const menuOptions = [
+  { id: 2, name: 'Chuyên khoa', to: 'manage/clinic' },
+  { id: 3, name: 'Cơ sở y tế', to: 'manage/place' },
+  { id: 4, name: 'Gói khám', to: 'manage/combo' },
+];
 
 const cloneDeep = <T>(object: T): T => {
   const newObject = JSON.parse(JSON.stringify(object));

@@ -12,6 +12,8 @@ const options = [
   { id: 2, title: 'Settings', to: '/' },
 ];
 
+const langs = ['Vietnamese', 'Englang'];
+
 type Props = {
   name: string;
 };
@@ -20,8 +22,10 @@ export default function Avatar({ name }: Props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [show, setShow] = useState<boolean>(false);
+  const [showLang, setShowLang] = useState<boolean>(false);
 
   const onToggle = () => setShow(!show);
+  const onShowLang = () => setShowLang(!showLang);
 
   const onLogout = () => {
     dispatch(logoutUser());
@@ -46,6 +50,21 @@ export default function Avatar({ name }: Props) {
               <Link to={item.to}>{item.title}</Link>
             </li>
           ))}
+          <li onClick={onShowLang} className='dropdown dropdown-left'>
+            <label>Switch Languages</label>
+            {showLang && (
+              <ul
+                tabIndex={0}
+                className='menu dropdown-content mr-2 z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4'
+              >
+                {langs.map((lang, index) => (
+                  <li key={`${lang}${index}`}>
+                    <span>{lang}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
           <li>
             <button onClick={onToggle} className='px-4 py-2 bg-base-100'>
               Logout

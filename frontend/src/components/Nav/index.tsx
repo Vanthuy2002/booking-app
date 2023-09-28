@@ -1,4 +1,4 @@
-import { pathRoutes } from '@/utils/contants';
+import { menuOptions, pathRoutes } from '@/utils/contants';
 import { Link, useNavigate } from 'react-router-dom';
 import { Fragment } from 'react';
 import Avatar from '../User';
@@ -16,7 +16,7 @@ export default function BasicNav(props: Props) {
     <div className='fixed top-0 navbar bg-base-100'>
       <div className='navbar-start'>
         <div className='dropdown'>
-          <label tabIndex={0} className='btn btn-ghost lg:hidden'>
+          <label tabIndex={0} className='btn btn-ghost btn-circle'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               className='w-5 h-5'
@@ -28,31 +28,29 @@ export default function BasicNav(props: Props) {
                 strokeLinecap='round'
                 strokeLinejoin='round'
                 strokeWidth='2'
-                d='M4 6h16M4 12h8m-8 6h16'
+                d='M4 6h16M4 12h16M4 18h7'
               />
             </svg>
           </label>
           <ul
             tabIndex={0}
-            className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
+            className='menu dropdown-content mt-3 z-[1] px-2 py-3 shadow bg-base-100 rounded-box w-52'
           >
-            <li>
-              <Link to={pathRoutes.HOME}>Home</Link>
-            </li>
+            {menuOptions.map((menu) => (
+              <li key={menu.id}>
+                <Link to={menu.to}>{menu.name}</Link>
+              </li>
+            ))}
           </ul>
         </div>
-        <Link to='/' className='text-xl font-bold normal-case btn btn-ghost'>
-          Booking
-        </Link>
       </div>
-      <div className='hidden navbar-center lg:flex'>
-        <ul className='px-1 menu menu-horizontal'>
-          <li>
-            <Link className='font-semibold' to={pathRoutes.HOME}>
-              Home
-            </Link>
-          </li>
-        </ul>
+      <div className='navbar-center'>
+        <Link
+          to={pathRoutes.HOME}
+          className='text-xl font-bold normal-case btn btn-ghost'
+        >
+          Booking Care
+        </Link>
       </div>
       <div className='flex gap-2 navbar-end'>
         {user && user.fullName ? (
